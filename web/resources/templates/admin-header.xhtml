@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>UOG Application Tracking System</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+
+
+    </h:head>
+    <h:body>
+        <composite:interface>
+            <!--            <composite:attribute name="header"></composite:attribute>-->
+        </composite:interface>
+        <composite:implementation>
+            <h:outputStylesheet name="header.css" library="css" />
+            <div class="header">
+                <h:commandLink class="logo"  value="APPLICATION TRACKING SYSTEM"/>
+                <h:form style="background-color: black;">
+                    <p:menubar >
+
+                        <p:menuitem value="Feedback" icon="fa fa-fw fa-comment-o" url="feedback.xhtml" />
+                        <p:menuitem value="Notifications" icon="pi pi-bell" url="notifications.xhtml" />
+                        <p:submenu label="XYYZZZ">
+                            <p:menuitem value="My Applications" icon="pi pi-file" url="my-applications.xhtml" />
+                            <p:menuitem value="Profile" icon="pi pi-user" url="user-profile.xhtml" />
+                            <p:menuitem value="Privacy" icon="pi pi-lock" url="privacy.xhtml" />
+                            <p:menuitem value="Logout" icon="pi pi-sign-out"/>
+
+
+                        </p:submenu>
+                        <f:facet name="options">
+                            <p:commandButton  style="margin-left: 1px;" type="button" value="Logout" icon="pi pi-home" />
+                        </f:facet>
+                    </p:menubar>
+
+                </h:form>
+            </div>
+            
+        </composite:implementation>
+    </h:body>
+</html>
+

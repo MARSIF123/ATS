@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:co="http://xmlns.jcp.org/jsf/composite/templates"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>UOG Application Tracking System</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <co:header/>
+        <h:form id="form" >
+            <p:messages id="message" showDetail="false" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+            <p:outputLabel styleClass="title" style="font-size: 30px;" value="General Student Application Form" />
+
+            <p:panelGrid  id="grid" columns="4" styleClass="outerpanelgrid"  >
+
+                <p:outputLabel value="Student Name: " for="name" />
+                <p:inputText   required="true" disabled="true" id="name" maxlength="30" value="#{userBean.name}" />   
+
+                <p:outputLabel  value="Roll #: " for="roll" />
+                <p:inputText  required="true" type="number" id="roll" value="#{generalApplicationBean.rollNo}">
+                    <f:validateLength maximum="12" />
+                </p:inputText>
+                <p:outputLabel  value="Departemnt: " for="department" />
+                <p:selectOneMenu id="department" value="#{selectOneDepartmentView.department}" >
+
+                    <f:selectItems value="#{selectOneDepartmentView.departments}" var="department"
+                                   itemLabel="#{department.title}" itemValue="#{department}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel  value="Semester " for="@next" />
+                <p:selectOneMenu  required="true" id="option" value="#{generalApplicationBean.semester}">
+                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="I" itemValue="1"/>
+                    <f:selectItem itemLabel="II" itemValue="2"/>
+                    <f:selectItem itemLabel="III" itemValue="3"/>
+                    <f:selectItem itemLabel="IV" itemValue="4"/>
+                    <f:selectItem itemLabel="V" itemValue="5"/>
+                    <f:selectItem itemLabel="VI" itemValue="6"/>
+                    <f:selectItem itemLabel="VII" itemValue="7"/>
+                    <f:selectItem itemLabel="VIII" itemValue="8"/>
+
+
+                    <f:facet name="footer">
+                        <p:divider styleClass="mt-0" />
+                        <h:outputText value="8 options" style="font-weight:bold;"/>
+                    </f:facet>
+                </p:selectOneMenu>
+
+
+                <p:outputLabel value="Program:" styleClass="label"/>
+                <p:selectOneRadio   class="radio" id="progrma" required="true" value="#{generalApplicationBean.program}">
+                    <f:selectItem itemLabel="Morning" itemValue="1" />
+                    <f:selectItem itemLabel="Evening" itemValue="0" />
+                    <f:validateRequired  id="messages"/>
+                </p:selectOneRadio>
+
+
+                <p:outputLabel value="Contact No: " for="phoneNo" />
+                <p:inputText  id="phoneNo"  value="#{generalApplicationBean.phoneNo}"  type="number" placeholder="i.e 03XXXXXXXXX" >
+                    <f:ajax execute="phoneNo" event="keypress"  /></p:inputText>
+                <p:outputLabel  value="Subject:" for="subject" />
+                <p:inputText  required="true" id="subject" /> 
+
+                <p:outputLabel  value="Content" for="content" />
+                <h:inputTextarea value="#{generalApplicationBean.content}" id="content" /> 
+
+                <p:outputLabel value="HOD Remarks:" for="hodRemarks" />
+                <h:inputTextarea required="true"  id="hodRemarks"   /> 
+
+            </p:panelGrid>
+
+
+
+
+
+            <p:panelGrid columns="3" styleClass="outerpanelgrid" style="margin-top: 15px; margin-bottom: 60px;">
+                <p:commandButton value="Submit" type="submit" update="message" />
+                <p:commandButton value="Print" icon="pi pi-print"/>                
+                <p:commandButton value="Download" icon="pi pi-download"/>
+            </p:panelGrid>
+
+        </h:form>
+    </h:body>
+</html>
+

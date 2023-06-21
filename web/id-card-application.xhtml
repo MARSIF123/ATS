@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:co="http://xmlns.jcp.org/jsf/composite/templates"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>UOG Application Tracking System</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <co:header/>
+        <h:form id="form" >
+
+            <p:outputLabel styleClass="title" value="Id Card Application Form"  style="font-size: 30px;"/>
+
+            <p:panelGrid columns="4" styleClass="outerpanelgrid" >
+
+                <p:outputLabel styleClass="label" value="Student Name: " for="name" />
+                <p:inputText  styleClass="input" id="name" value="#{gApp.sName}" maxlength="30" />  
+
+
+                <p:outputLabel styleClass="label" value="Father's Name: " for="fName" />
+                <p:inputText  styleClass="input" id="fName" value="#{gApp.sName}" maxlength="30" />  
+
+                <p:outputLabel styleClass="label" value="Degree Title: " for="degree" />
+                <p:inputText  styleClass="input" id="degree" value="#{gApp.sName}" maxlength="40" />   
+
+
+                <p:outputLabel styleClass="label" value="Roll #: " for="roll" />
+                <p:inputText  styleClass="input" id="roll" value="#{gApp.rollNo}" maxlength="12"/>
+
+
+
+                <p:outputLabel styleClass="label" value="Registration#: " for="reg" />
+                <p:inputText  styleClass="input" id="reg" value="#{gApp.rollNo}" maxlength="12"/>
+
+
+
+                <p:outputLabel styleClass="label" value="Session#: " for="session" />
+                <p:inputText  styleClass="input" id="session" value="#{gApp.rollNo}" maxlength="4"/>
+
+
+
+
+                <p:outputLabel value="Program:" styleClass="label" for="program"/>
+                <p:selectOneRadio  class="radio" id="program" value="#{gApp.program}" required="true">
+                    <f:selectItem itemLabel="AD" itemValue="1" />
+                    <f:selectItem itemLabel="BS" itemValue="2" />
+                    <f:selectItem itemLabel="MS" itemValue="3" />
+                    <f:selectItem itemLabel="PhD" itemValue="4" />
+                </p:selectOneRadio>
+
+
+                <p:outputLabel styleClass="label" value="CNIC#: " for="cnic" />
+                <p:inputText styleClass="input" id="cnic" value="#{gApp.department}" maxlength="40" /> 
+
+
+
+                <p:outputLabel styleClass="label" value="Address " for="address" />
+                <p:inputText styleClass="input" id="address" value="#{gApp.department}" maxlength="40" /> 
+
+                <p:outputLabel styleClass="label" value="Departemnt: " for="department" />
+                <p:inputText styleClass="input" id="department" value="#{gApp.department}" maxlength="40" /> 
+
+                <p:outputLabel styleClass="label" value="PTCL#:" for="ptcl" />
+                <p:inputText styleClass="input" id="ptcl" value="#{gApp.department}" maxlength="40" /> 
+
+
+
+                <p:outputLabel styleClass="label" value="Cell#: " for="phoneNo" />
+                <p:inputText styleClass="input" id="phoneNo" value="#{gApp.department}" maxlength="40" /> 
+
+
+
+                <p:outputLabel styleClass="label" value="Email" for="email" />
+                <p:inputText styleClass="input" id="email" value="#{gApp.department}" maxlength="40" /> 
+
+
+
+                <p:outputLabel styleClass="label" value="Challan#: " for="challanNo" />
+                <p:inputText styleClass="input" id="challanNo" value="#{gApp.department}" maxlength="40" /> 
+
+
+                <p:outputLabel styleClass="label" value="Challan Dated: " for="challan-date" />
+                <p:datePicker id="challan-date"  showIcon="true" />
+
+
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="2" styleClass="outerpanelgrid">
+
+                <p:outputLabel  value="Remarks (if any):" for="subject" />
+                <h:inputTextarea  id="subject" value="#{gApp.subject}" cols="80" rows="5" /> 
+
+                <p:outputLabel value="Student Signatue:" for="sign" />
+                <p:signature  id="sign" style="width:400px;height:200px;" widgetVar="sig" value="#{signatureView.value}"
+                              required="true" guideline="true"/>
+                <p:commandButton value="Submit" icon="pi pi-check"/>
+                <p:commandButton value="Clear" icon="pi pi-times" type="button" onclick="PF('sig').clear()" styleClass="ui-button-flat ml-2"/>
+
+
+                <p:outputLabel value="HOD Signatue:" for="hod-sign" />
+                <p:signature   readonly="true" id="hod-sign" style="width:400px;height:200px" widgetVar="hod-sig" required="true" guideline="true"/>
+
+                <p:commandButton value="Submit" icon="pi pi-check"/>
+                <p:commandButton value="Clear" icon="pi pi-times" type="button" onclick="PF('hod-sig').clear()" styleClass="ui-button-flat ml-2"/>
+
+
+            </p:panelGrid>
+
+
+            <p:panelGrid columns="1" styleClass="outerpanelgrid">
+
+                <p:outputLabel ><b>Attachments:</b><br/>
+                    Applicant is requested to fill the token and attach token with form.<br/>
+                    Three hundred and sixty rupees challan (360/-) original paid bank challan.</p:outputLabel>
+
+            </p:panelGrid>
+            <p:panelGrid columns="1" styleClass="outerpanelgrid">
+                <h:form>
+                    <p:fileUpload listener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                                  multiple="true" update="messages" sizeLimit="100000" fileLimit="2"
+                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+
+                    <p:growl id="messages" showDetail="true" keepAlive="true"/>
+                </h:form>
+            </p:panelGrid>
+
+            <p:panelGrid columns="3" styleClass="outerpanelgrid">
+                <p:commandButton value="Submit" />
+                <p:commandButton value="Print" icon="pi pi-print"/>                
+                <p:commandButton value="Download" icon="pi pi-download"/>
+            </p:panelGrid>
+
+        </h:form>
+    </h:body>
+</html>
+

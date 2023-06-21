@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:co="http://xmlns.jcp.org/jsf/composite/templates"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>UOG Application Tracking System</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <co:header/>
+        <h:form id="form">
+            <p:outputLabel styleClass="title" style="font-size: 30px;" value="Late Fee Application Form" />
+            <p:panelGrid columns="4" styleClass="outerpanelgrid">
+                <p:outputLabel  value="Student Name: " for="name" />
+                <p:inputText   required="true" id="name" value="#{gApp.sName}" maxlength="30" />  
+
+                <p:outputLabel value="Roll #: " for="roll" />
+                <p:inputText  required="true" id="roll" value="#{gApp.rollNo}" maxlength="12"/>
+
+                <p:outputLabel  value="Departemnt: " for="department" />
+                <p:inputText required="true" id="department" value="#{gApp.department}" maxlength="40" /> 
+
+                <p:outputLabel value="Semester: " for="semester" />
+                 <p:selectOneMenu  required="true" id="semester" value="#{selectOneMenuView.selectedOption}">
+                    <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="I" itemValue="1"/>
+                    <f:selectItem itemLabel="II" itemValue="2"/>
+                    <f:selectItem itemLabel="III" itemValue="3"/>
+                    <f:selectItem itemLabel="IV" itemValue="4"/>
+                    <f:selectItem itemLabel="V" itemValue="5"/>
+                    <f:selectItem itemLabel="VI" itemValue="6"/>
+                    <f:selectItem itemLabel="VII" itemValue="7"/>
+                    <f:selectItem itemLabel="VIII" itemValue="8"/>
+
+
+                    <f:facet name="footer">
+                        <p:divider styleClass="mt-0" />
+                        <h:outputText value="8 options" style="font-weight:bold;"/>
+                    </f:facet>
+                 </p:selectOneMenu>
+
+                <p:outputLabel styleClass="label" value="Dated: " for="date" />
+                <p:datePicker id="date"  showIcon="true"  pattern="dd.MM.yyyy" readonly="true"  disabled="true"/>
+
+
+                <p:outputLabel value="Cell#: " for="phoneNo" />
+                <p:inputText required="true" id="phoneNo" type="number" /> 
+
+                <p:outputLabel value="Program:"  for="program"/>
+                <p:selectOneRadio  class="radio" id="program" value="#{gApp.program}" required="true">
+                    <f:selectItem itemLabel="Morning" itemValue="1" />
+                    <f:selectItem itemLabel="Evening" itemValue="0" />
+                </p:selectOneRadio>
+                
+                
+                <p:outputLabel styleClass="label" value="Year: " for="year" />
+                <p:inputText id="year" maxlength="4" type="number" />
+                
+                
+                <p:outputLabel value="Late Fee:"  for="sem"/>
+                <p:selectOneRadio  class="radio" id="sem" value="#{gApp.program}" required="true">
+                    <f:selectItem itemLabel="Fall" itemValue="1" />
+                    <f:selectItem itemLabel="Spring" itemValue="0" />
+                    <f:selectItem itemLabel="thesis" itemValue="2" />
+
+                </p:selectOneRadio>
+
+                <p:outputLabel  value="Departemnt: " for="fDepartment" />
+                <p:inputText  required="true" id="fDepartment" value="#{gApp.department}" maxlength="40" /> 
+
+                <p:outputLabel value="Degree Title: " for="degree" />
+                <p:inputText  required="true" id="degree" value="#{gApp.sName}" maxlength="40" />   
+
+
+
+                <p:outputLabel  value="Subject:" for="subject" />
+                <p:inputText id="subject" /> 
+
+                <p:outputLabel  value="Content" for="content" />
+                <h:inputTextarea  id="content" /> 
+
+                <p:outputLabel  value="HOD Remarks: " for="hodRemarks" />
+                <h:inputTextarea id="hodRemarks"  />  
+
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="3" styleClass="outerpanelgrid" style="margin: 10px 0;">
+                <p:commandButton value="Submit" />
+                <p:commandButton value="Print" icon="pi pi-print"/>                
+                <p:commandButton value="Download" icon="pi pi-download"/>
+            </p:panelGrid>
+
+        </h:form>
+
+    </h:body>
+</html>
+

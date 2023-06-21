@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:co="http://xmlns.jcp.org/jsf/composite/templates"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>UOG Application Tracking System</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <co:header/>
+        <h:form id="form" >
+
+            <p:outputLabel styleClass="title" value="Semester Freeze Application Form" style="font-size: 30px;"/>
+            <p:panelGrid columns="4" styleClass="outerpanelgrid" >
+                <p:outputLabel styleClass="label" value="Campus Name: " for="cName" />
+                <p:inputText  styleClass="input" id="cName" value="#{gApp.sName}" maxlength="30" /> 
+
+                <p:outputLabel styleClass="label" value="Roll #: " for="roll" />
+                <p:inputText  styleClass="input" id="roll" value="#{gApp.rollNo}" maxlength="12"/>
+
+
+                <p:outputLabel styleClass="label" value="Current CGPA " for="cgpa" />
+                <p:inputText styleClass="input" id="cgpa" value="#{gApp.department}" maxlength="2" /> 
+
+
+                <p:outputLabel styleClass="label" value="Current Semester:" for="cSemester" />
+                <p:inputText styleClass="input" id="cSemester" value="#{gApp.semester}" maxlength="4" a:placeholder="i.e VII"/> 
+
+
+                <p:outputLabel styleClass="label" value="Semester to be Freezed:" for="fSemester" />
+                <p:inputText styleClass="input" id="fSemester" value="#{gApp.semester}" maxlength="4" a:placeholder="i.e VII"/> 
+
+                <p:outputLabel styleClass="label" value="Dated: " for="date" />
+                <p:datePicker id="date"  showIcon="true" />
+
+                <p:outputLabel styleClass="label" value="Degree:" for="degree" />
+                <p:inputText styleClass="input" id="degree" value="#{gApp.semester}" maxlength="40"/> 
+
+
+                <p:outputLabel value="Program:" styleClass="label"/>
+                <p:selectOneRadio  class="radio" id="gender" value="#{gApp.program}" required="true">
+                    <f:selectItem itemLabel="Morning" itemValue="1" />
+                    <f:selectItem itemLabel="Evening" itemValue="0" />
+                </p:selectOneRadio>
+            </p:panelGrid>
+            <p:panelGrid columns="2" styleClass="outerpanelgrid" >
+
+                <p:outputLabel styleClass="label" value="Valid Reason:" for="subject" />
+                <h:inputTextarea styleClass="input" id="subject" value="#{gApp.subject}" cols="80" rows="15" /> 
+                <p:outputLabel value="Student Signatue:" for="sign" />
+                <p:signature  id="sign" style="width:400px;height:200px;" widgetVar="sig" value="#{signatureView.value}"
+                              required="true" guideline="true"/>
+                <p:commandButton value="Submit" icon="pi pi-check"/>
+                <p:commandButton value="Clear" icon="pi pi-times" type="button" onclick="PF('sig').clear()" 
+                                 styleClass="ui-button-flat ml-2"/>
+            </p:panelGrid>
+            <p:panelGrid columns="1" styleClass="outerpanelgrid" >
+                <p:outputLabel>It is certified that the reason given by the applicant is valid thus recommended for the freeze of 
+                    semester.<br/>
+                    Rule Reference:<br/>
+                    Amend clause 15.1 to 15.1.iv of the semester System Rules (Semester Freeze Rules)</p:outputLabel>
+            </p:panelGrid>
+            <p:panelGrid columns="2" styleClass="outerpanelgrid" >
+
+                <p:outputLabel value="HOD Signatue:" for="hod-sign" />
+                <p:signature  id="hod-sign" style="width:400px;height:200px" widgetVar="hod-sig" required="true" guideline="true"/>
+                <p:commandButton value="Submit" icon="pi pi-check"/>
+                <p:commandButton value="Clear" icon="pi pi-times" type="button" onclick="PF('hod-sig').clear()" 
+                                 styleClass="ui-button-flat ml-2"/>
+            </p:panelGrid>
+            <p:panelGrid columns="3" styleClass="outerpanelgrid" style="margin: 10px 0;">
+                <p:commandButton value="Submit" />
+                <p:commandButton value="Print" icon="pi pi-print"/>                
+                <p:commandButton value="Download" icon="pi pi-download"/>
+            </p:panelGrid>
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:co="http://xmlns.jcp.org/jsf/composite/templates"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>UOG Application Tracking System</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <co:header/>
+        <h:form id="form" style="margin-top: 50px;">
+            <p:outputLabel styleClass="title" value="Application Tracking System Needs Your Feedback, Got 2 Mins?" style="font-size: 30px;" />
+
+            <p:panelGrid columns="2" styleClass="outerpanelgrid" >
+                <p:outputLabel value="Which type of application did you needed?" for="q1"/>
+                <p:inputText id="q1"/>
+                <p:outputLabel value="Did you get the application form you needed?" for="q2"/>
+                <p:inputText id="q2"/> 
+
+                <p:outputLabel value="Do you have any suggestion to improve our service?" for="q3"/>
+                <p:inputText id="q3"/> 
+                <p:outputLabel value="Plese rate your experience with us."/>
+                <p:rating/>
+               
+            </p:panelGrid>
+            <p:commandButton value="Submit"  iconPos="right" icon="pi pi-check" style="margin-top: 15px;"/>
+
+        </h:form>
+    </h:body>
+</html>
+

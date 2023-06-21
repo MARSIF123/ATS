@@ -1,0 +1,37 @@
+.bg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    background-image: url("#{resource['images:background_uog001.jpg']}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.7;
+    
+}
+.form{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.outerpanelgrid>tbody>tr{
+    border: none !important;
+}
+.outerpanelgrid>tbody>tr>td{
+    border: none !important;
+}
+#form{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    margin-bottom: 8px;
+    color: #116FBF;
+    font-weight: bold;
+}
+.display{
+    display: none;
+}
